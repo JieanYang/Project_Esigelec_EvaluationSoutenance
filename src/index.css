@@ -1,0 +1,17 @@
+
+.image{
+	display: block;
+	margin:auto;
+}
+
+#image_calendar{
+	width: 100%;
+	height: auto;
+}
+
+.list-group-item>div>p:nth-child(odd){
+	text-align: left;
+}
+.list-group-item>div>p:nth-child(even){
+	text-align: right;
+}
