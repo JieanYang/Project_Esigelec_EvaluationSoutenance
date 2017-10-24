@@ -1,16 +1,17 @@
-/*body,html{
-	width: 100%;
-	height: 100%;
-}
-*/
+
 
 
 /*home.html*/
+/*the space between the div.row*/
+.row{
+	margin-top:20px; 
+}
+/*au milieu*/
 .image{
 	display: block;
 	margin:auto;
 }
-
+/*the size of image*/
 #image_calendar{
 	width: 100%;
 	height: auto;
@@ -23,7 +24,38 @@
 	text-align: right;
 }
 
-/*enseignant0*/
+/*page login_valid*/
+#login_valid{
+	/*div align horizontally and vertically*/
+	position: absolute;
+	left:50%;
+	top: 50%;
+	width: 600px;
+	height: 300px;
+	margin-left: -300px;
+	margin-top: -150px;
+
+	/*text align horizontally and vertically*/
+	line-height: 200px; 
+	padding: 50px;
+	text-align: center;
+	font-size: 5em;
+	color: gray;
+}
+
+/*page_login*/
+/*.login_form{
+	width: 80%;
+	margin: auto;
+	margin-top: 10%;
+	padding-left: 10%;
+}
+
+.login_input{
+	width: 500px;
+}*/
+
+/*enseignant0
 .btn_group{
 	position:absolute;
 	top:30px;
@@ -36,7 +68,7 @@
 	margin-bottom: 40px;
 }
 
-/*enseignant1-2*/
+/*enseignant1-2
 #form{
 	position: absolute;
 	top:10%;
@@ -46,4 +78,16 @@
 
 .form_btn_item{
 	margin:10px;
+}
+
+
+.login_form{
+	width: 300px; 
+	margin: 50px auto;
+}
+
+.login_btn_form{
+	width: 500px; 
+	margin: 50px auto;
+	padding-left:10%;
 }
