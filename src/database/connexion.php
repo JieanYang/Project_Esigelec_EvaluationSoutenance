@@ -12,7 +12,7 @@
 	<h1>Liste des clients à spammer</h1>
 	
 	<?php
-	require_once('param.inc.php');
+	require_once('./PHPfiles inc/param.inc.php');
 
 
 	$mysqli = new mysqli($host,$login,$password,$dbname);
