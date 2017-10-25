@@ -6,7 +6,7 @@
 .row{
 	margin-top:20px; 
 }
-/*au milieu*/
+/*image au milieu*/
 .image{
 	display: block;
 	margin:auto;
@@ -16,7 +16,7 @@
 	width: 100%;
 	height: auto;
 }
-
+/*tableaux de soutenance*/
 .list-group-item>div>p:nth-child(odd){
 	text-align: left;
 }
@@ -43,51 +43,12 @@
 	color: gray;
 }
 
-/*page_login*/
-/*.login_form{
-	width: 80%;
-	margin: auto;
-	margin-top: 10%;
-	padding-left: 10%;
-}
-
-.login_input{
-	width: 500px;
-}*/
-
-/*enseignant0
+/*enseignant0*/
 .btn_group{
-	position:absolute;
-	top:30px;
-	left: 30%;
-	right: 30%;
-}
-.btn_item{
-	width:300px;
-	margin-top:40px;
-	margin-bottom: 40px;
-}
-
-/*enseignant1-2
-#form{
-	position: absolute;
-	top:10%;
-	left:25%;
-	right: 25%;
-}
-
-.form_btn_item{
-	margin:10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
-.login_form{
-	width: 300px; 
-	margin: 50px auto;
-}
 
-.login_btn_form{
-	width: 500px; 
-	margin: 50px auto;
-	padding-left:10%;
-}

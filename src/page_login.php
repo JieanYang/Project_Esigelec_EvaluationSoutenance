@@ -17,18 +17,18 @@ include './PHPfiles inc/header.inc.php';
 <div class="row">
 <div class="col-sm-3 col-xs-12"></div>
 <div class="col-sm-6 col-xs-12">
-	<form class="login_form" method="POST">
+	<form method="POST">
 	  <div class="form-group">
 	  	<!-- une parameter for judge the entry of mail and passwd -->
 	  	<div id="info" style="display:none"></div>
 	  	<input name="login" value="1" type="hidden" />
 	    <label for="mail">Email address</label>
-	    <input type="email" class="form-control login_input" id="mail" name="mail" aria-describedby="emailHelp" placeholder="Enter email" required>
-	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    <input type="email" class="form-control" id="mail" name="mail" aria-describedby="emailHelp" placeholder="Enter email" required>
+	    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
 	  </div>
 	  <div class="form-group">
 	    <label for="passwd">Password</label>
-	    <input type="password" class="form-control login_input" id="passwd" name="passwd" placeholder="Password" required>
+	    <input type="password" class="form-control" id="passwd" name="passwd" placeholder="Password" required>
 	  </div>
 	  <!-- <div class="form-check">
 	    <label class="form-check-label">
@@ -36,8 +36,10 @@ include './PHPfiles inc/header.inc.php';
 	      Check me out
 	    </label>
 	  </div> -->
-	  <button type="submit" class="btn btn-outline-primary">Submit</button>
-	  <a class="btn btn-outline-primary"  href="index.php">cancel</a>
+      <div class="form-group">
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
+          <a class="btn btn-outline-primary"  href="index.php">cancel</a>
+      </div>  
 	</form>
 </div>
 </div>
