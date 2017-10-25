@@ -50,7 +50,7 @@ CREATE TABLE if not exists groupe(
 CREATE TABLE if not exists soutenance(
 	id_soutenance int(25) AUTO_INCREMENT NOT NULL,
 	nom_soute varchar(25),
-	data_soute date,
+	date_soute datetime,
 	status_soute varchar(25),
 	numsalle_soute int(25),
 	PRIMARY KEY(id_soutenance)
