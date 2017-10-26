@@ -130,8 +130,6 @@ if(isset($_POST['creer']))
     }
 
     mysqli_close($mysqli);
-
-
 }
 ?>
 

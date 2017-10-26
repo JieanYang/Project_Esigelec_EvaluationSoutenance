@@ -32,38 +32,49 @@ include './PHPfiles inc/header.inc.php';
 		  <ul class="list-group">
 			    <li class="list-group-item active"><h4>soutenance à venir</h4>
 			    </li>
-			    <li class="list-group-item">
-					<div>
-						<p>nom de soutenance</p>
-						<p>15h</p>
-						<p>groupe</p>
-						<p>status</p>
-					</div>
-			    </li>
-			    <li class="list-group-item">
-					<div>
-						<p>nom de soutenance</p>
-						<p>15h</p>
-						<p>groupe</p>
-						<p>status</p>
-					</div>
-			    </li>
-			    <li class="list-group-item">
-					<div>
-						<p>nom de soutenance</p>
-						<p>15h</p>
-						<p>groupe</p>
-						<p>status</p>
-					</div>
-			    </li>
-			    <li class="list-group-item">
-					<div>
-						<p>nom de soutenance</p>
-						<p>15h</p>
-						<p>groupe</p>
-						<p>status</p>
-					</div>
-			    </li>
+			    <div style="padding: 10px;"></div>
+			    <?php  //afficher les informations de soutenance
+
+				    //connect to mysql
+				    require_once('./PHPfiles inc/param.inc.php');
+				    $mysqli = new mysqli($host,$login,$password,$dbname);
+
+				    //retirer les donnees de soutenance
+				    $query = "SELECT soutenance.nom_soute,soutenance.date_soute,soutenance.numsalle_soute,soutenance.status_soute,groupe.id_groupe 
+				    FROM soutenance 
+				    LEFT JOIN groupe
+				    ON soutenance.id_soutenance = groupe.id_soutenance
+				    ORDER BY soutenance.date_soute";
+
+				    $result = mysqli_query($mysqli,$query);
+				    if(!$result){
+				    	echo "La requête a échoué:".$mysqli->error;
+        				exit;
+				    }elseif($result -> num_rows ==0){
+				    	echo '<p>Aucun resultat :</p>';
+				    }else{
+				    	$i=0;
+				    	while($tuple=$result->fetch_assoc()){
+				    		$i++;
+				    		echo "
+					    	<li class='list-group-item'>
+								<div>
+									<p>".$tuple['nom_soute']."</p>
+									<p>".$tuple['date_soute']."</p>
+									<p>salle ".$tuple['numsalle_soute']."</p>
+									<p>status ".$tuple['status_soute']."</p>
+									<p>groupe ".$tuple['id_groupe']."</p>
+								</div>
+					    	</li>";
+				    		if($i==4){
+				    			break;
+				    		}
+				    	}
+				    }
+
+				    mysqli_close($mysqli);
+			    				    	
+			     ?>
 			</ul>
 		</div>
 	</div>
