@@ -18,6 +18,7 @@ CREATE TABLE if not exists enseignant(
 	id_ensei int(25) AUTO_INCREMENT NOT NULL,
 	nom_ensei varchar(25) NOT NULL,
 	prenom_ensei varchar(25) NOT NULL,
+	identity varchar(25) NOT NULL,
 	id_compte int(25),
 	PRIMARY KEY(id_ensei),
 	FOREIGN KEY(id_compte) REFERENCES compte(id_compte)
@@ -29,6 +30,7 @@ CREATE TABLE if not exists eleve(
 	id_eleve int(25) AUTO_INCREMENT NOT NULL,
 	nom_eleve varchar(25) NOT NULL,
 	prenom_eleve varchar(25) NOT NULL,
+	identity varchar(25) NOT NULL,
 	id_compte int(25),
 	id_groupe int(25),
 	PRIMARY KEY(id_eleve),
