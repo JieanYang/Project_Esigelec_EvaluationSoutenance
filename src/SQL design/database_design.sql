@@ -9,15 +9,14 @@ CREATE TABLE if not exists soutenance(
 	nom_soute varchar(25),
 	date_soute datetime,
 	status_soute varchar(25),
-	numsalle_soute int(25),
+	numsalle_soute varchar(25),
 	PRIMARY KEY(id_soutenance)
 );
 
 -- create table groupe
 CREATE TABLE if not exists groupe(
-	id_groupe int(25) AUTO_INCREMENT NOT NULL,
+	id_groupe int(25) NOT NULL,
 	id_soutenance int(25),
-	PRIMARY KEY(id_groupe),
 	FOREIGN KEY(id_soutenance) REFERENCES soutenance(id_soutenance)
 );
 
@@ -28,8 +27,6 @@ CREATE TABLE if not exists compte(
 	passwd varchar(60) NOT NULL,
 	PRIMARY KEY(id_compte)
 );
-INSERT INTO compte VALUE (null,'yja8534786@gmail.com','167b6c4a4e415fdfc65024a01a1d46b38344ab1b');
-
 
 -- create table enseignant
 CREATE TABLE if not exists enseignant(
@@ -56,3 +53,16 @@ CREATE TABLE if not exists eleve(
 	FOREIGN KEY(id_groupe) REFERENCES groupe(id_groupe)
 );
 
+
+-- Des donnees de simulation
+INSERT INTO compte VALUE (null,'yja8534786@gmail.com','167b6c4a4e415fdfc65024a01a1d46b38344ab1b');
+
+INSERT INTO soutenance (nom_soute, date_soute, status_soute, numsalle_soute) VALUES ('math', '2017-10-26T15:00', 'dispinible', 'b233');
+INSERT INTO groupe (id_groupe, id_soutenance) VALUES ('5', '1');
+INSERT INTO soutenance (nom_soute, date_soute, status_soute, numsalle_soute) VALUES ('english', '2017-10-26T16:00', 'dispinible', 'b256');
+INSERT INTO groupe (id_groupe, id_soutenance) VALUES ('8', '2');
+
+INSERT INTO eleve(nom_eleve, prenom_eleve, identity, id_groupe) 
+VALUES ('yang', 'jiean', 'eleve', '5');
+INSERT INTO eleve(nom_eleve, prenom_eleve, identity, id_groupe) 
+VALUES ('liang', 'feifan', 'eleve', '4');

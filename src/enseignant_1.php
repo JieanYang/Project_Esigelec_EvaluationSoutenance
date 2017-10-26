@@ -22,6 +22,9 @@ include './PHPfiles inc/header.inc.php';
 	<div class="col-sm-6 col-xs-12">
 		<form method="POST">
 			<div class="form-group">
+				<!-- check -->
+				<div id="info" style="display:none"></div>
+	  			<input name="creer" value="1" type="hidden" />
 				<label for="soutenance">nom de soutenance</label>
 				<input type="text" class="form-control" id="soutenance" name="soutenance" placeholder="nom de soutenance" required>
 			</div>
@@ -56,6 +59,67 @@ include './PHPfiles inc/header.inc.php';
 		</form>
 	</div>
 </div>
+
+<?php
+if(isset($_POST['creer']))
+{
+    $nomSoutenance =$_POST['soutenance'];
+    $numSalle = $_POST['numsalle'];
+    $dateTime = $_POST['date'];
+    $status = $_POST['status'];
+    $groupe = $_POST['groupe'];
+
+
+    echo $nomSoutenance.'\n';
+    echo $numSalle.'\n';
+    echo $dateTime.'\n';
+    echo $status.'\n';
+    echo $groupe.'\n';
+
+    //connect to mysql
+    require_once('./PHPfiles inc/param.inc.php');
+    $mysqli = new mysqli($host,$login,$password,$dbname);
+    //inserer les donnes dans le tableau soutenance
+    $query = "INSERT INTO soutenance (nom_soute, date_soute, status_soute, numsalle_soute) VALUES ('".$nomSoutenance."', '".$dateTime."', '".$status."', '".$numSalle."')";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	echo "Bien creer un soutenance";
+    }
+    //retirer id de soutenance
+    $query= "SELECT id_soutenance FROM soutenance where nom_soute = '".$nomSoutenance."' and date_soute = '".$dateTime."' and numsalle_soute = '".$numSalle."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	$tuple = $result->fetch_assoc();
+    	$id_soutenance = $tuple['id_soutenance'];
+    	echo $id_soutenance;
+    }
+
+    //inserer les donnes dans le tableau groupe
+    $query = "INSERT INTO groupe (id_groupe, id_soutenance) VALUES ('".$groupe."', '".$id_soutenance."')";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	echo 'Bien creer une groupe';
+    }
+
+    mysqli_close($mysqli);
+
+
+}
+?>
+
+
 
 <?php include'./PHPfiles inc/scripts.inc.php';?>
   

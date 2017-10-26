@@ -24,6 +24,9 @@ include './PHPfiles inc/header.inc.php';
 	<div class="col-sm-6 col-xs-12">
 		<form method="POST">
 			<div class="form-group">
+				<!-- check -->
+				<div id="info" style="display:none"></div>
+	  			<input name="supprimer" value="1" type="hidden" />
 				<label for="soutenance">nom de soutenance</label>
 				<input type="text" class="form-control" id="soutenance" name="soutenance" placeholder="nom de soutenance" required>
 			</div>
@@ -35,6 +38,62 @@ include './PHPfiles inc/header.inc.php';
 	</div>
 </div>
 
+
+<?php
+if(isset($_POST['supprimer']))
+{
+    $nomSoutenance =$_POST['soutenance'];
+
+	echo $nomSoutenance.'\n';
+
+    //connect to mysql
+    require_once('./PHPfiles inc/param.inc.php');
+    $mysqli = new mysqli($host,$login,$password,$dbname);
+
+    //verifier existance de nomSoutenance et reitrer id de soutenance
+    $query = "SELECT count(*),id_soutenance FROM soutenance where nom_soute = '".$nomSoutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }
+    $row = mysqli_fetch_row($result);
+    
+    $count = $row[0];
+    if($count == 0){
+    	echo "Doesn't have this soutenance:".$nomSoutenance;
+    	exit;
+    }else{
+    	$tuple = $result->fetch_assoc();
+    	$id_soutenance = $row[1];
+    	echo 'id of '.$nomSoutenance.' est '.$id_soutenance;
+    }
+
+    //delete les donnes dans soutenance
+    $query = "DELETE FROM soutenance WHERE nom_soute = '".$nomSoutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	echo "Delete the soutenance: ".$nomSoutenance;
+    }
+    //delete les donnes dans groupe
+    $query = "DELETE FROM groupe WHERE id_soutenance = '".$id_soutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	echo "Delete the groupe de soutenance: ".$nomSoutenance;
+    }
+
+    mysqli_close($mysqli);
+}
+?>
 
 
 <?php include'./PHPfiles inc/scripts.inc.php';?>

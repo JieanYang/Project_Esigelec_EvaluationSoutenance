@@ -24,6 +24,9 @@ include './PHPfiles inc/header.inc.php';
 	<div class="col-sm-6 col-xs-12">
 		<form method="POST">
 		<div class="form-group">
+			<!-- check -->
+			<div id="info" style="display:none"></div>
+	  		<input name="modifier" value="1" type="hidden" />
 			<label for="soutenance">nom de soutenance</label>
 			<input type="text" class="form-control" id="soutenance" name="soutenance" placeholder="nom de soutenance" required>
 		</div>
@@ -42,6 +45,51 @@ include './PHPfiles inc/header.inc.php';
 	</form>
 	</div>
 </div>
+
+
+<?php
+if(isset($_POST['modifier']))
+{
+    $nomSoutenance =$_POST['soutenance'];
+    $status = $_POST['status'];
+
+
+    echo $nomSoutenance.'\n';
+    echo $status.'\n';
+
+    //connect to mysql
+    require_once('./PHPfiles inc/param.inc.php');
+    $mysqli = new mysqli($host,$login,$password,$dbname);
+
+    //verifier existance de nomSoutenance
+    $query = "SELECT count(*) FROM soutenance where nom_soute = '".$nomSoutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }
+    $row = mysqli_fetch_row($result);
+    $count = $row[0];
+    if($count == 0){
+    	echo "Doesn't have this soutenance:".$nomSoutenance;
+    	exit;
+    }
+
+    //update les donnes
+    $query = "UPDATE soutenance SET status_soute = '".$status."' where nom_soute = '".$nomSoutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }else{
+    	echo "Update the status of soutenance";
+    }
+
+    mysqli_close($mysqli);
+}
+?>
 
 
 
