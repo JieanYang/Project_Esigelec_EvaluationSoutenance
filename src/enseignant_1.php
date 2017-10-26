@@ -79,6 +79,22 @@ if(isset($_POST['creer']))
     //connect to mysql
     require_once('./PHPfiles inc/param.inc.php');
     $mysqli = new mysqli($host,$login,$password,$dbname);
+
+    //virifier l'existence de soutenance
+    $query = "SELECT count(*) FROM soutenance where nom_soute = '".$nomSoutenance."'";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result)
+    {
+        echo "La requête a échoué:".$mysqli->error;
+        exit;
+    }
+    $row = mysqli_fetch_row($result);
+    $count = $row[0];
+    if($count != 0){
+        echo "This soutenance is already on the agenda:".$nomSoutenance;
+        exit;
+    }
+
     //inserer les donnes dans le tableau soutenance
     $query = "INSERT INTO soutenance (nom_soute, date_soute, status_soute, numsalle_soute) VALUES ('".$nomSoutenance."', '".$dateTime."', '".$status."', '".$numSalle."')";
     $result = mysqli_query($mysqli,$query);

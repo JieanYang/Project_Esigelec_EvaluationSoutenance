@@ -58,22 +58,6 @@ if(isset($_POST['change']))
     $mysqli = new mysqli($host,$login,$password,$dbname);
 
 
-    //verifier existance d'eleve
-    $query = "SELECT count(*) FROM eleve where id_eleve = '".$eleve."'";
-    $result = mysqli_query($mysqli,$query);
-    if(!$result)
-    {
-        echo "La requête a échoué:".$mysqli->error;
-        exit;
-    }
-    $row = mysqli_fetch_row($result);
-    
-    $count = $row[0];
-    if($count == 0){
-    	echo "Doesn't have this id of student: ".$eleve;
-    	exit;
-    }
-
     //Deux situations
 	if($_POST['gerer']=='Ajouter'){
 		echo "ajouter";
