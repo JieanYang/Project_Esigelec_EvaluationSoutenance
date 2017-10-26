@@ -3,6 +3,24 @@ CREATE DATABASE if not exists project_esi;
 use project_esi;
 
 
+-- create table soutenance
+CREATE TABLE if not exists soutenance(
+	id_soutenance int(25) AUTO_INCREMENT NOT NULL,
+	nom_soute varchar(25),
+	date_soute datetime,
+	status_soute varchar(25),
+	numsalle_soute int(25),
+	PRIMARY KEY(id_soutenance)
+);
+
+-- create table groupe
+CREATE TABLE if not exists groupe(
+	id_groupe int(25) AUTO_INCREMENT NOT NULL,
+	id_soutenance int(25),
+	PRIMARY KEY(id_groupe),
+	FOREIGN KEY(id_soutenance) REFERENCES soutenance(id_soutenance)
+);
+
 -- create table compte
 CREATE TABLE if not exists compte(
 	id_compte int(25) AUTO_INCREMENT NOT NULL,
@@ -38,22 +56,3 @@ CREATE TABLE if not exists eleve(
 	FOREIGN KEY(id_groupe) REFERENCES groupe(id_groupe)
 );
 
-
--- create table groupe
-CREATE TABLE if not exists groupe(
-	id_groupe int(25) AUTO_INCREMENT NOT NULL,
-	id_soutenance int(25),
-	PRIMARY KEY(id_groupe),
-	FOREIGN KEY(id_soutenance) REFERENCES soutenance(id_soutenance)
-);
-
-
--- create table soutenance
-CREATE TABLE if not exists soutenance(
-	id_soutenance int(25) AUTO_INCREMENT NOT NULL,
-	nom_soute varchar(25),
-	date_soute datetime,
-	status_soute varchar(25),
-	numsalle_soute int(25),
-	PRIMARY KEY(id_soutenance)
-);
