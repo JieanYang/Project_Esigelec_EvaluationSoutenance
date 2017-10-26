@@ -7,10 +7,10 @@ use project_esi;
 CREATE TABLE if not exists compte(
 	id_compte int(25) AUTO_INCREMENT NOT NULL,
 	mail varchar(50) NOT NULL,
-	passwd varchar(30) NOT NULL,
+	passwd varchar(60) NOT NULL,
 	PRIMARY KEY(id_compte)
 );
-INSERT INTO compte VALUE (null,'yja8534786@gmail.com','yang');
+INSERT INTO compte VALUE (null,'yja8534786@gmail.com','167b6c4a4e415fdfc65024a01a1d46b38344ab1b');
 
 
 -- create table enseignant
