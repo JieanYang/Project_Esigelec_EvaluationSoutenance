@@ -30,6 +30,8 @@ include './PHPfiles inc/header.inc.php';
 	<a class="col-xm-12 col-sm-12 btn btn-outline-primary btn-lg" href="enseignant_4.php">gérer groupe</a>
 	<br><br><br><br>
 	<a class="col-xm-12 col-sm-12 btn btn-outline-primary btn-lg" href="enseignant_5.php">import élève</a>
+	<br><br><br><br>
+	<a href="?logout=1" class="btn btn-outline-danger">Log out</a>
 </div>
 
 </div>

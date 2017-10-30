@@ -53,7 +53,7 @@ if(isset($_POST['login']))
     //connect to mysql
     require_once('./PHPfiles inc/param.inc.php');
     $mysqli = new mysqli($host,$login,$password,$dbname);
-    $query = "SELECT count(*) FROM compte where mail ='".$user."' and passwd = '".sha1($passwd)."'";
+    $query = "SELECT count(*),identity FROM compte where mail ='".$user."' and passwd = '".sha1($passwd)."'";
     // use sha1() for encryption password
     $result = mysqli_query($mysqli,$query);
     if(!$result)
@@ -63,10 +63,12 @@ if(isset($_POST['login']))
     }
     $row = mysqli_fetch_row($result);
     $count = $row[0];
+    $identity = $row[1];
     // the database doesn't have different users, so the result is 1 or 0
     if($count >0 )
     {
         $_SESSION['loggedin']=1;
+        $_SESSION['identity']=$identity;
         header("Location:page_login_valid.php");
         exit;
     }
