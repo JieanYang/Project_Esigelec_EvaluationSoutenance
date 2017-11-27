@@ -9,6 +9,11 @@ if($_SESSION['loggedin']!=1)
     header("Location:page_login.php");
     exit;
 }
+if($_SESSION['identity']!='enseignant')
+{
+    header("Location:page_login.php");
+    exit;
+}
 ?>
 
 <?php

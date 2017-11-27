@@ -10,6 +10,8 @@ if($_SESSION['loggedin']!=1)
     header("Location:page_login.php");
     exit;
 }
+
+
 ?>
 
 <?php

@@ -53,9 +53,14 @@ if(isset($_POST['login']))
     //connect to mysql
     require_once('./PHPfiles inc/param.inc.php');
     $mysqli = new mysqli($host,$login,$password,$dbname);
-    $query = "SELECT count(*),identity FROM compte where mail ='".$user."' and passwd = '".sha1($passwd)."'";
+
+
+    $query_eleve = " SELECT count(*),compte.identity, eleve.id_eleve FROM compte  INNER JOIN eleve ON compte.id_compte=eleve.id_compte where mail ='".$user."' and passwd = '".sha1($passwd)."' ";
+    $query_enseignant = " SELECT count(*),compte.identity, enseignant.id_ensei FROM compte  INNER JOIN enseignant ON compte.id_compte=enseignant.id_compte  where mail ='".$user."' and passwd = '".sha1($passwd)."' ";
+
+
     // use sha1() for encryption password
-    $result = mysqli_query($mysqli,$query);
+    $result = mysqli_query($mysqli,$query_enseignant);
     if(!$result)
     {
         echo "La requête a échoué！";
@@ -64,22 +69,47 @@ if(isset($_POST['login']))
     $row = mysqli_fetch_row($result);
     $count = $row[0];
     $identity = $row[1];
+    $id = $row[2];
     // the database doesn't have different users, so the result is 1 or 0
-    if($count >0 )
+    if($count > 0 )
     {
         $_SESSION['loggedin']=1;
         $_SESSION['identity']=$identity;
+        $_SESSION['id'] = $id;
         header("Location:page_login_valid.php");
         exit;
     }
     else
     {
-        //print information errors
-        echo
-        " <script > 
-        document.getElementById(\"info\").style.display='block';
-        document.getElementById(\"info\").innerHTML='Do you think the user name is wrong or the password is wrong? ';
-        </script > ";
+        $result = mysqli_query($mysqli,$query_eleve);
+        if(!$result)
+        {
+            echo "La requête a échoué！";
+            exit;
+        }
+        $row = mysqli_fetch_row($result);
+        $count = $row[0];
+        $identity = $row[1];
+        $id = $row[2];
+
+        if($count > 0 )
+        {
+            $_SESSION['loggedin']=1;
+            $_SESSION['identity']=$identity;
+            $_SESSION['id'] = $id;
+            header("Location:page_login_valid.php");
+            exit;
+        }
+        else{
+            // print information errors
+            echo
+            " <script > 
+            document.getElementById(\"info\").style.display='block';
+            document.getElementById(\"info\").innerHTML='Do you think the user name is wrong or the password is wrong? ';
+            </script > ";
+        }
+
+        
     }
 }
 ?>

@@ -39,6 +39,32 @@
 	}
 	?>
 
+
+
+
+<!-- 插入数据 -->
+	<?php
+
+
+	require_once('../PHPfiles inc/param.inc.php');
+
+
+	$conn = new mysqli($host,$login,$password,$dbname);
+	if ($conn->connect_error) {
+	    die("连接失败: " . $conn->connect_error);
+	}
+
+	// $sql = "INSERT INTO soutenance (nom_soute, date_soute, status_soute, numsalle_soute) VALUES ('math', '2017-10-26T15:00', 'disponible', 'b233')";
+
+	// if ($conn->query($sql) === TRUE) {
+	//     echo "新记录插入成功";
+	// } else {
+	//     echo "Error: " . $sql . "<br>" . $conn->error;
+	// }
+
+	// $conn->close();
+	?>
+
 </body>
 
 </html>

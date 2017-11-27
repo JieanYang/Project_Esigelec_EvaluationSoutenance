@@ -14,7 +14,7 @@ include './PHPfiles inc/header.inc.php';
 			  <a class="navbar-brand">ESIG'Soutenais</a>
 			  <form class="form-inline">
 			    <a class="btn btn-outline-success" href="page_login.php" style="margin: 0 4px;">login</a>
-			    <a class="btn btn-outline-success" href="#">register</a>
+			    <a class="btn btn-outline-success" href="Page d'inscription.html">register</a>
 			  </form>
 			</nav>
 		</div>
