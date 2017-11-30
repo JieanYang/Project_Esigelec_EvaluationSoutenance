@@ -31,6 +31,7 @@ include './PHPfiles inc/header.inc.php';
 <body class="container">
 <div class="row">
 <div class="btn_group">
+    <a class="col-xm-12 col-sm-12 btn btn-outline-primary btn-lg" href="enseignant_6.php">lister soutenance et l'éleve</a>
 	<br><br><br><br>
 	<a class="col-xm-12 col-sm-12 btn btn-outline-primary btn-lg" href="enseignant_1.php">créer soutenance</a>
 	<br><br><br><br>

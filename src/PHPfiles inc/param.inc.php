@@ -1,7 +1,7 @@
 <!-- the information of database -->
 <?php
-$host='127.0.0.1';
-$login='root';
-$password='';
-$dbname='project_esi';
+$host='localhost';
+$login='gr08148dr9';
+$password='Wv4u4rvC';
+$dbname='bddgr0814';
 ?>
