@@ -1,63 +1,181 @@
-<!DOCTYOPE>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CSS -->
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <title> Ma Page d'inscription </title>
-    <link rel="stylesheet" href="style.css">
-    <body>
-        <form action="" method="POST">
-        <div class="container" >
-        <h1>Ma Page d'inscription</h1>
-        </div>
-                
-       <div class="container" >
-      <h1>  Votre nom </h1>
-          nom et prénom 
-        <input type="text" value=""><br>
-        </div>
-        
-        <div class="container" >
-        <h1> Mail</h1>
-          Veuillez saisir votre mail
-           <p> <input type="mail" value=""><br></p>
-          Veuillez confirmer votre mail
-            <p><input type="mail" value=""><br></p>
-            </div>
-        <div class="container" >
-         <h1>Mot de passe </h1>
-         Veuillez saisir votre mot de passe
-          <p> <input type="password" value=""><br></p>
-          Veuillez confirmer votre mot de passe
-            <p><input type="password" value=""><br></p>
-        </div>
-            <div class="container" >
-         <h1>Identité</h1>
-         Veuillez préciser votre statut
-          <select name="identité" id="identité">
-           <option value="étudiant">Etudiant</option>
-           <option value="enseignant">Enseignant</option>>
-              
-                </select>
-                <p>
-        <div class="container">
-          
-				<a class="btn btn-outline-primary" href="Page%20de%20validation.html">S'INSCRIRE</a>
-                <a class="btn btn-outline-primary" href="">RETOUR</a>
-            </form>
-        </div>
-        <div class="container-fluid"></div></p>
-        
-        <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    </body>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscription</title>
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body{
+	background:#AEE4FF;
+}
+.form-style-10{
+	max-width:450px;
+	padding:30px;
+	margin:40px auto;
+	background: #FFF;
+	border-radius: 10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}
+.form-style-10 .inner-wrap{
+	padding: 30px;
+	background: #F8F8F8;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
+.form-style-10 h1{
+	background: #2A88AD;
+	padding: 20px 30px 15px 30px;
+	margin: -30px -30px 30px -30px;
+	border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+}
+.form-style-10 h1 > span{
+	display: block;
+	margin-top: 2px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-10 label{
+	display: block;
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #888;
+	margin-bottom: 15px;
+}
+.form-style-10 input[type="text"],
+.form-style-10 input[type="date"],
+.form-style-10 input[type="datetime"],
+.form-style-10 input[type="email"],
+.form-style-10 input[type="number"],
+.form-style-10 input[type="search"],
+.form-style-10 input[type="time"],
+.form-style-10 input[type="url"],
+.form-style-10 input[type="password"],
+.form-style-10 textarea,
+.form-style-10 select {
+	display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.form-style-10 .section{
+	font: normal 20px 'Bitter', serif;
+	color: #2A88AD;
+	margin-bottom: 5px;
+}
+.form-style-10 .section span {
+	background: #2A88AD;
+	padding: 5px 10px 5px 10px;
+	position: absolute;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border: 4px solid #fff;
+	font-size: 14px;
+	margin-left: -45px;
+	color: #fff;
+	margin-top: -3px;
+}
+.form-style-10 input[type="button"], 
+.form-style-10 input[type="submit"],.ref{
+	background: #2A88AD;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+	font-size: 15px;
+}
+.form-style-10 .ref{
+	background: orange;
+	border: 1px solid orange;
+}
+.form-style-10 input[type="button"]:hover, 
+.form-style-10 input[type="submit"]:hover,.ref{
+	background: #2A6881;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+}
+
+</style>
 </head>
+
+<body>
+
+<div class="form-style-10">
+<h1>Page d'inscription<span>Inscrivez vous maintenant!</span></h1>
+<form action="inscription.php" method="POST">
+    <div class="section"><span>1</span>Nom &amp; Prenom</div>
+    <div class="inner-wrap">
+        <label>Nom <input type="text" name="nom" id ="nom" /></label>
+        <label>Prenom <input type="text" name="prenom" id ="prenom" /></label>
+    </div>
+
+    <div class="section"><span>2</span>Email &amp; Mot de passe</div>
+    <div class="inner-wrap">
+        <label>Adresse Email<input type="email" name="mail" id ="mail"  /></label>
+        <label>Mot de passe <input type="password" name="password" id ="password" /></label>
+    </div>
+
+    <div class="section"><span>3</span>Identité &amp; Groupe</div>
+    <div class="inner-wrap">
+        <label>
+            Statut
+        	<select name="identite" id="identite">
+                 <option value="eleve">Etudiant</option>
+                 <option value="enseignant">Enseignant</option>>  
+        	</select>
+        </label>
+        
+        <label>
+        	Groupe* 
+       		 <select name="groupe" id="groupe">
+                 <option value="1">Groupe 1</option>
+                 <option value="2">Groupe 2</option>
+                 <option value="3">Groupe 3</option>
+                 <option value="4">Groupe 4</option>
+                 <option value="5">Groupe 5</option>
+                 <option value="6">Groupe 6</option>
+                 <option value="7">Groupe 7</option>
+                 <option value="8">Groupe 8</option>
+                  
+        	</select>
+        </label>
+	</div>
+    <div class="button-section">
+     <input type="submit" name="S'INSCRIRE" />
+     <a href="index.php" class="ref">RETOUR</a>
+    </div>
+</form>
+</div>
+
+</body>
 </html>

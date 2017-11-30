@@ -52,18 +52,33 @@ if(isset($_POST['login']))
     $passwd = $_POST['passwd'];
     //connect to mysql
     require_once('./PHPfiles inc/param.inc.php');
-    $mysqli = new mysqli($host,$login,$password,$dbname);
+   /* $mysqli = new mysqli($host,$login,$password,$dbname);
 
 
     $query_eleve = " SELECT count(*),compte.identity, eleve.id_eleve FROM compte  INNER JOIN eleve ON compte.id_compte=eleve.id_compte where mail ='".$user."' and passwd = '".sha1($passwd)."' ";
-    $query_enseignant = " SELECT count(*),compte.identity, enseignant.id_ensei FROM compte  INNER JOIN enseignant ON compte.id_compte=enseignant.id_compte  where mail ='".$user."' and passwd = '".sha1($passwd)."' ";
+    $query_enseignant = " SELECT count(*),compte.identity, enseignant.id_ensei FROM compte  INNER JOIN enseignant ON compte.id_compte=enseignant.id_compte  where mail ='".$user."' and passwd = '".sha1($passwd)."' ";*/
 
+    $bdd = mysqli_connect($host, $login, $password, $dbname);
+    $query="SELECT * FROM compte WHERE mail='".$user."' AND passwd = '".sha1($passwd)."'";
+    $sql=$bdd->query($query);
+    $result= $sql->fetch_assoc();
+    if($result == false){
+        echo
+            " <script > 
+            document.getElementById(\"info\").style.display='block';
+            document.getElementById(\"info\").innerHTML='Do you think the user name is wrong or the password is wrong? ';
+            </script > ";
+    } else {
+        $_SESSION['loggedin']=1;
+        $_SESSION['identity']=$result['identity'];
+        $_SESSION['id'] = $result['id_compte'];
+        header("Location:page_login_valid.php");
 
     // use sha1() for encryption password
-    $result = mysqli_query($mysqli,$query_enseignant);
+    /*$result = mysqli_query($mysqli,$query_enseignant);
     if(!$result)
     {
-        echo "La requête a échoué！";
+        echo "La requête a échoué 1！";
         exit;
     }
     $row = mysqli_fetch_row($result);
@@ -107,7 +122,7 @@ if(isset($_POST['login']))
             document.getElementById(\"info\").style.display='block';
             document.getElementById(\"info\").innerHTML='Do you think the user name is wrong or the password is wrong? ';
             </script > ";
-        }
+        }*/
 
         
     }

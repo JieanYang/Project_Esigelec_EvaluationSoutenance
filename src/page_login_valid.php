@@ -48,7 +48,7 @@ include './PHPfiles inc/header.inc.php';
 				    document.onreadystatechange = function(){
 				        if(document.readyState == 'complete'){
 				        	setTimeout(function () {
-				        		alert('skip to the page eleve!');
+				        		self.location='home_eleve.php';
 				        	}, 3000);
 				            
 				        }
